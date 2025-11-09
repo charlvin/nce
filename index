@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新公民企业 (NCE) 项目</title>
+    <!-- 
+      Chosen Palette: Slate and Teal (板岩色与青色)
+      Application Structure Plan: 设计了一个单页项目仪表板/交互式方案。结构遵循逻辑叙事：1. 介绍 (项目是什么), 2. 理念演进 (为什么需要), 3. 解决方案 (NCE四大支柱), 4. 核心产品 (BizReview App), 5. 交互式模拟 (评分机制), 6. 商业模式 (信任与可持续性), 7. 路线图与愿景 (未来)。这种结构综合了所有三个源文档，为利益相关者创造了比镜像文档更友好的用户流。
+      Visualization & Content Choices: [理念对比 -> 表格 -> 对比], [四大支柱 -> 2x2网格 -> 组织信息], [评分机制 -> 滑块 + 雷达图 (Chart.js) -> 交互式展示核心机制], [双主体模式 -> HTML/Tailwind图表 -> 组织结构], [行动计划 -> 3列网格 -> 时间变化]。所有交互（滑块、导航）均使用原生JavaScript。
+      CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 使用Tailwind的 Inter 字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', 'Helvetica Neue', 'Arial', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Chart.js 响应式容器样式 */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* 控制图表最大宽度 */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* 移动端高度 */
+            max-height: 400px; /* 最大高度 */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px; /* 桌面端高度 */
+                max-height: 500px;
+            }
+        }
+        /* 自定义滑块样式 */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #d1d5db; /* 灰色轨道 */
+            outline: none;
+            opacity: 0.9;
+            transition: opacity .2s;
+        }
+        input[type=range]:hover {
+            opacity: 1;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #14b8a6; /* 青色滑块 */
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #14b8a6; /* 青色滑块 */
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        /* 导航栏下划线动画 */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #14b8a6; /* 青色 */
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- 导航栏 -->
+    <header class="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Title -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-slate-900">
+                        新公民企业 (NCE)
+                    </span>
+                </div>
+                <!-- 导航链接 -->
+                <div class="hidden md:flex md:space-x-8">
+                    <a href="#philosophy" class="nav-link text-gray-600 hover:text-slate-900 font-medium">理念</a>
+                    <a href="#demo" class="nav-link text-gray-600 hover:text-slate-900 font-medium">产品与模拟</a>
+                    <a href="#model" class="nav-link text-gray-600 hover:text-slate-900 font-medium">公信力模型</a>
+                    <a href="#roadmap" class="nav-link text-gray-600 hover:text-slate-900 font-medium">行动计划</a>
+                    <a href="#vision" class="nav-link text-gray-600 hover:text-slate-900 font-medium">宏大愿景</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主体内容 -->
+    <main>
+        <!-- 介绍 -->
+        <section id="hero" class="bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                    构建全球最大的<span class="text-teal-600">主体治理平台</span>
+                </h1>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    我们相信，透明度是驱动社会良性运转的核心力量。通过 BizReview App 和 NCE 评估体系，我们正在重新定义企业的价值。
+                </p>
+                <a href="#demo" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-teal-700 transition duration-300">
+                    探索评分模拟器
+                </a>
+            </div>
+        </section>
+
+        <!-- 理念演进 -->
+        <section id="philosophy" class="py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">理念的演进：超越 CSR 与 ESG</h2>
+                    <p class="mt-4 text-lg text-gray-600">NCE 理念是企业社会责任的第三代模型，它从根本上解决了前代模型的局限性。</p>
+                </div>
+
+                <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">理念模型</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">核心关注点</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">局限性</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">NCE 的超越性</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-sm md:text-base">
+                            <tr>
+                                <td class="px-6 py-5 font-bold text-slate-800">企业公民 (CSR)</td>
+                                <td class="px-6 py-5 text-gray-600">回馈社会、慈善捐赠</td>
+                                <td class="px-6 py-5 text-gray-600">与核心业务分离，缺乏可穿透的工具。</td>
+                                <td class="px-6 py-5 text-teal-700 font-medium">视为基本道德，而非核心价值。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-5 font-bold text-slate-800">ESG 框架</td>
+                                <td class="px-6 py-5 text-gray-600">外部风险、财务影响</td>
+                                <td class="px-6 py-5 text-gray-600">依赖企业自愿披露，易被“漂绿”。</td>
+                                <td class="px-6 py-5 text-teal-700 font-medium">加入多方实时数据，穿透企业“漂绿”行为。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-5 font-bold text-slate-800">新公民企业 (NCE)</td>
+                                <td class="px-6 py-5 text-gray-600">价值共创、社会契约</td>
+                                <td class="px-6 py-5 text-gray-600">--</td>
+                                <td class="px-6 py-5 text-teal-700 font-medium">结构化、真实性、本土化，与国家和社会目标深度绑定。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 四大支柱 (更新为五大评估维度) -->
+                <div class="mt-20">
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-10">新公民企业的五大评估维度</h3>
+                    <!-- 使用 grid-cols-5 在大屏上会很挤，改为 flex 或 responsive grid 3/2 结构 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- 维度 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2">员工福祉</h4>
+                            <p class="text-gray-600">关注劳动关系公平性、薪酬激励、身心健康。对应 BizReview App 中的“员工”角色点评。</p>
+                        </div>
+                        <!-- 维度 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2">客户价值</h4>
+                            <p class="text-gray-600">关注产品质量、定价诚信、数据安全。对应 BizReview App 中的“客户方/消费者”角色点评。</p>
+                        </div>
+                        <!-- 维度 3 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2">生态赋能</h4>
+                            <p class="text-gray-600">关注对供应商的公平对待、产业协同与带动。对应 BizReview App 中的“供应方”角色点评。</p>
+                        </div>
+                        <!-- 维度 4 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500 md:col-span-1 lg:col-span-1">
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2">社会贡献</h4>
+                            <p class="text-gray-600">关注环保投入、技术普惠、国家竞争力。数据来源为研究院获取的官方数据与合作调查。</p>
+                        </div>
+                        <!-- 维度 5 - 新增 -->
+                         <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500 md:col-span-1 lg:col-span-1">
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2">公众感知/媒体声誉</h4>
+                            <p class="text-gray-600">评估企业在公共事件处理、媒体形象、舆论危机应对和社会认可度方面的表现。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 交互式模拟器 -->
+        <section id="demo" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">BizReview App: 理念的实践引擎</h2>
+                    <p class="mt-4 text-lg text-gray-600">通过 NCE 评分模拟器，直观感受多方利益相关者的评价如何构成企业的综合价值。**（评分区间已更新为 0-10 分）**</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <!-- 滑块控制 -->
+                    <div class="space-y-6">
+                        <!-- 员工福祉 - 评分范围 0-10 -->
+                        <div>
+                            <label for="employeeScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
+                                <span>员工福祉</span>
+                                <span id="employeeScoreValue" class="font-bold text-teal-600 text-xl">5</span>
+                            </label>
+                            <input type="range" id="employeeScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>基础 (0)</span>
+                                <span>卓越 (10)</span>
+                            </div>
+                        </div>
+
+                        <!-- 客户价值 - 评分范围 0-10 -->
+                        <div>
+                            <label for="customerScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
+                                <span>客户价值</span>
+                                <span id="customerScoreValue" class="font-bold text-teal-600 text-xl">5</span>
+                            </label>
+                            <input type="range" id="customerScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>基础 (0)</span>
+                                <span>卓越 (+10)</span>
+                            </div>
+                        </div>
+
+                        <!-- 生态赋能 - 评分范围 0-10 -->
+                        <div>
+                            <label for="ecosystemScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
+                                <span>生态赋能</span>
+                                <span id="ecosystemScoreValue" class="font-bold text-teal-600 text-xl">5</span>
+                            </label>
+                            <input type="range" id="ecosystemScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>基础 (0)</span>
+                                <span>共赢 (+10)</span>
+                            </div>
+                        </div>
+
+                        <!-- 社会贡献 - 评分范围 0-10 -->
+                        <div>
+                            <label for="societyScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
+                                <span>社会贡献 (研究院评估)</span>
+                                <span id="societyScoreValue" class="font-bold text-teal-600 text-xl">5</span>
+                            </label>
+                            <input type="range" id="societyScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>合规 (0)</span>
+                                <span>引领 (+10)</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 公众感知/媒体声誉 - 新增维度，评分范围 0-10 -->
+                        <div>
+                            <label for="mediaScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
+                                <span>公众感知/媒体声誉</span>
+                                <span id="mediaScoreValue" class="font-bold text-teal-600 text-xl">5</span>
+                            </label>
+                            <input type="range" id="mediaScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>危机 (0)</span>
+                                <span>卓越 (10)</span>
+                            </div>
+                        </div>
+
+
+                        <!-- 综合总分 -->
+                        <div class="pt-4">
+                            <div class="bg-slate-100 p-6 rounded-lg text-center">
+                                <h4 class="text-lg font-medium text-gray-600 mb-1">NCE 综合总分</h4>
+                                <div id="totalScoreValue" class="text-6xl font-extrabold text-slate-900">25</div>
+                                <p class="text-sm text-gray-500">(分数范围: 0 至 +50)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 雷达图 -->
+                    <div class="chart-container">
+                        <canvas id="nceRadarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 公信力模型 -->
+        <section id="model" class="py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">公信力基石：双主体协同模式</h2>
+                    <p class="mt-4 text-lg text-gray-600">为消除“裁判员兼运动员”的公信力风险，我们采用决策分离、运营协同的双主体结构。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                    <!-- 研究院 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl mb-4">🏛️</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">NCE 研究院 (非营利)</h3>
+                        <p class="text-gray-600 mb-4">负责制定白皮书、维护打分标准、进行学术研究、联合发布报告。</p>
+                        <span class="inline-block bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1 rounded-full">核心：公信力 & 严谨性</span>
+                    </div>
+                    <!-- App 公司 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl mb-4">📱</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">BizReview 运营公司 (营利性)</h3>
+                        <p class="text-gray-600 mb-4">负责运营 BizReview App、收集用户点评数据、开发商业增值服务。</p>
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-medium px-4 py-1 rounded-full">核心：市场活力 & 数据引擎</span>
+                    </div>
+                </div>
+                <!-- 协同关系 -->
+                <div class="text-center mt-6 text-gray-600 text-lg font-medium flex justify-center items-center flex-col md:flex-row">
+                    <span class="block md:inline-block p-4">App公司 
+                        <span class="text-teal-600 font-bold mx-2">→</span> 
+                        支付授权费 & 提供脱敏数据
+                        <span class="text-teal-600 font-bold mx-2">→</span> 
+                        研究院
+                    </span>
+                    <span class="block md:inline-block p-4">研究院 
+                        <span class="text-indigo-600 font-bold mx-2">→</span> 
+                        提供公信力背书 & 榜单
+                        <span class="text-indigo-600 font-bold mx-2">→</span> 
+                        App公司
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行动计划 -->
+        <section id="roadmap" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">项目行动计划</h2>
+                    <p class="mt-4 text-lg text-gray-600">一个分三阶段实施的清晰路线图。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- 阶段 I -->
+                    <div class="bg-slate-50 border border-gray-200 p-8 rounded-xl">
+                        <div class="text-teal-600 font-bold text-sm uppercase mb-2">阶段 I: 冷启动</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">验证理念，获得公信力</h3>
+                        <ul class="list-disc list-outside space-y-2 text-gray-600 pl-5">
+                            <li>撰写并发布《新公民企业》白皮书。</li>
+                            <li>找寻学术机构达成**联合研究合作**。</li>
+                            <li>App 初版完成内部测试。</li>
+                        </ul>
+                    </div>
+                    <!-- 阶段 II -->
+                    <div class="bg-slate-50 border border-gray-200 p-8 rounded-xl">
+                        <div class="text-teal-600 font-bold text-sm uppercase mb-2">阶段 II: 合作落地</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">建立影响力，吸引用户</h3>
+                        <ul class="list-disc list-outside space-y-2 text-gray-600 pl-5">
+                            <li>与知名企业达成初期合作调查，作为典范案例。</li>
+                            <li>联合学术机构发布首份**年度行业报告**。</li>
+                            <li>App 正式对外开放并进行推广。</li>
+                        </ul>
+                    </div>
+                    <!-- 阶段 III -->
+                    <div class="bg-slate-50 border border-gray-200 p-8 rounded-xl">
+                        <div class="text-teal-600 font-bold text-sm uppercase mb-2">阶段 III: 规模化</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">实现可持续运营</h3>
+                        <ul class="list-disc list-outside space-y-2 text-gray-600 pl-5">
+                            <li>正式成立**研究院**（非营利）和**公司**（营利性）。</li>
+                            <li>与省市级政府部门达成首个**购买服务合同**。</li>
+                            <li>App 实现规模化用户增长和商业变现。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 宏大愿景 -->
+        <section id="vision" class="py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">我们的宏大愿景</h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    NCE 的核心方法论——**“多方穿透式透明评估”**——具有极强的可迁移性。在巩固企业领域后，我们将以相同的方法论扩展至更广泛的社会主体：
+                </p>
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg">
+                        🏫 学校 / 教育机构
+                    </span>
+                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg">
+                        🏥 医院 / 医疗机构
+                    </span>
+                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg">
+                        🏛️ 政府部门 / 公共服务
+                    </span>
+                </div>
+                <p class="mt-8 text-2xl font-semibold text-teal-700">
+                    最终实现“全球最大的主体治理平台”的愿景。
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-slate-800 text-slate-300 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg font-semibold text-white">新公民企业 (NCE) 项目</p>
+            <p class="mt-2 text-sm">以透明度驱动社会良性运转。</p>
+            <p class="mt-4 text-xs text-slate-400">&copy; 2025 NCE 项目。保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 图表初始化 ---
+            const ctx = document.getElementById('nceRadarChart').getContext('2d');
+            const chartData = {
+                // 标签更新为 5 个维度
+                labels: ['员工福祉', '客户价值', '生态赋能', '社会贡献', '公众感知/媒体声誉'],
+                datasets: [{
+                    label: 'NCE 综合评分',
+                    // 初始值更新为 5 个维度 (0-10 区间)
+                    data: [5, 5, 5, 5, 5], 
+                    fill: true,
+                    backgroundColor: 'rgba(20, 184, 166, 0.2)', // 青色背景
+                    borderColor: 'rgb(13, 148, 136)', // 深青色边框
+                    pointBackgroundColor: 'rgb(13, 148, 136)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(13, 148, 136)'
+                }]
+            };
+
+            const nceRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: chartData,
+                options: {
+                    maintainAspectRatio: false, // 关键：允许图表填充容器
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                color: '#334155' // slate-700
+                            },
+                            min: 0, // 评分范围更新为 0-10
+                            max: 10, // 评分范围更新为 0-10
+                            ticks: {
+                                stepSize: 2, // 调整步长以适应 0-10
+                                backdropColor: 'rgba(255, 255, 255, 0.75)', // 半透明背景
+                                color: '#475569' // slate-600
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // 隐藏图例
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.formattedValue;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // --- 滑块与图表联动 ---
+            // 滑块列表更新为 5 个维度
+            const sliders = [
+                { id: 'employeeScore', valueId: 'employeeScoreValue' },
+                { id: 'customerScore', valueId: 'customerScoreValue' },
+                { id: 'ecosystemScore', valueId: 'ecosystemScoreValue' },
+                { id: 'societyScore', valueId: 'societyScoreValue' },
+                { id: 'mediaScore', valueId: 'mediaScoreValue' } // 新增媒体声誉
+            ];
+            const totalScoreEl = document.getElementById('totalScoreValue');
+
+            function updateChartAndScore() {
+                const values = sliders.map(s => {
+                    const slider = document.getElementById(s.id);
+                    const valueEl = document.getElementById(s.valueId);
+                    const value = parseInt(slider.value, 10);
+                    valueEl.textContent = value;
+                    return value;
+                });
+
+                // 更新雷达图数据
+                nceRadarChart.data.datasets[0].data = values;
+                nceRadarChart.update();
+
+                // 更新总分 (加和)
+                const totalScore = values.reduce((acc, val) => acc + val, 0);
+                totalScoreEl.textContent = totalScore;
+            }
+
+            // 初始化总分
+            updateChartAndScore(); 
+
+            sliders.forEach(s => {
+                document.getElementById(s.id).addEventListener('input', updateChartAndScore);
+            });
+
+            // --- 导航栏平滑滚动 ---
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // --- 导航栏激活状态 (可选) ---
+            const sections = document.querySelectorAll('section[id]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-20% 0px -80% 0px', threshold: 0 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
