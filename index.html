@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新公民企业 (NCE) 项目</title>
+    <title data-lang-key="title">New Citizen Enterprise (NCE) Project</title>
     <!-- 
       Chosen Palette: Slate and Teal (板岩色与青色)
       Application Structure Plan: 设计了一个单页项目仪表板/交互式方案。结构遵循逻辑叙事：1. 介绍 (项目是什么), 2. 理念演进 (为什么需要), 3. 解决方案 (NCE四大支柱), 4. 核心产品 (BizReview App), 5. 交互式模拟 (评分机制), 6. 商业模式 (信任与可持续性), 7. 路线图与愿景 (未来)。这种结构综合了所有三个源文档，为利益相关者创造了比镜像文档更友好的用户流。
@@ -104,17 +104,22 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo/Title -->
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-slate-900">
-                        新公民企业 (NCE)
+                    <span class="text-2xl font-bold text-slate-900" data-lang-key="title">
+                        新公民企业 (NCE) 项目
                     </span>
                 </div>
                 <!-- 导航链接 -->
-                <div class="hidden md:flex md:space-x-8">
-                    <a href="#philosophy" class="nav-link text-gray-600 hover:text-slate-900 font-medium">理念</a>
-                    <a href="#demo" class="nav-link text-gray-600 hover:text-slate-900 font-medium">产品与模拟</a>
-                    <a href="#model" class="nav-link text-gray-600 hover:text-slate-900 font-medium">公信力模型</a>
-                    <a href="#roadmap" class="nav-link text-gray-600 hover:text-slate-900 font-medium">行动计划</a>
-                    <a href="#vision" class="nav-link text-gray-600 hover:text-slate-900 font-medium">宏大愿景</a>
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex md:space-x-8">
+                        <a href="#philosophy" class="nav-link text-gray-600 hover:text-slate-900 font-medium" data-lang-key="nav_philosophy">理念</a>
+                        <a href="#demo" class="nav-link text-gray-600 hover:text-slate-900 font-medium" data-lang-key="nav_product">产品与模拟</a>
+                        <a href="#model" class="nav-link text-gray-600 hover:text-slate-900 font-medium" data-lang-key="nav_credibility">公信力模型</a>
+                        <a href="#roadmap" class="nav-link text-gray-600 hover:text-slate-900 font-medium" data-lang-key="nav_roadmap">行动计划</a>
+                        <a href="#vision" class="nav-link text-gray-600 hover:text-slate-900 font-medium" data-lang-key="nav_vision">宏大愿景</a>
+                    </div>
+                    <button id="lang-toggle" class="bg-teal-600 text-white font-medium py-1 px-3 rounded-md hover:bg-teal-700 transition duration-300 text-sm">
+                        中/EN
+                    </button>
                 </div>
             </div>
         </nav>
@@ -126,12 +131,12 @@
         <section id="hero" class="bg-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-                    构建全球最大的<span class="text-teal-600">主体治理平台</span>
+                    <span data-lang-key="hero_h1_part1">构建全球最大的</span><span class="text-teal-600" data-lang-key="hero_h1_part2">主体治理平台</span>
                 </h1>
-                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto" data-lang-key="hero_p">
                     我们相信，透明度是驱动社会良性运转的核心力量。通过 BizReview App 和 NCE 评估体系，我们正在重新定义企业的价值。
                 </p>
-                <a href="#demo" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-teal-700 transition duration-300">
+                <a href="#demo" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-teal-700 transition duration-300" data-lang-key="hero_button">
                     探索评分模拟器
                 </a>
             </div>
@@ -141,72 +146,71 @@
         <section id="philosophy" class="py-16 md:py-24">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">理念的演进：超越 CSR 与 ESG</h2>
-                    <p class="mt-4 text-lg text-gray-600">NCE 理念是企业社会责任的第三代模型，它从根本上解决了前代模型的局限性。</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang-key="phil_h2">理念的演进：超越 CSR 与 ESG</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-lang-key="phil_p">NCE 理念是企业社会责任的第三代模型，它从根本上解决了前代模型的局限性。</p>
                 </div>
 
                 <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">理念模型</th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">核心关注点</th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">局限性</th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">NCE 的超越性</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" data-lang-key="table_model">理念模型</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" data-lang-key="table_focus">核心关注点</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" data-lang-key="table_limitation">局限性</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider" data-lang-key="table_transcendence">NCE 的超越性</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 text-sm md:text-base">
                             <tr>
-                                <td class="px-6 py-5 font-bold text-slate-800">企业公民 (CSR)</td>
-                                <td class="px-6 py-5 text-gray-600">回馈社会、慈善捐赠</td>
-                                <td class="px-6 py-5 text-gray-600">与核心业务分离，缺乏可穿透的工具。</td>
-                                <td class="px-6 py-5 text-teal-700 font-medium">视为基本道德，而非核心价值。</td>
+                                <td class="px-6 py-5 font-bold text-slate-800" data-lang-key="table_csr">企业公民 (CSR)</td>
+                                <td class="px-6 py-5 text-gray-600" data-lang-key="table_csr_focus">回馈社会、慈善捐赠</td>
+                                <td class="px-6 py-5 text-gray-600" data-lang-key="table_csr_limit">与核心业务分离，缺乏可穿透的工具。</td>
+                                <td class="px-6 py-5 text-teal-700 font-medium" data-lang-key="table_csr_transcend">视为基本道德，而非核心价值。</td>
                             </tr>
                             <tr>
-                                <td class="px-6 py-5 font-bold text-slate-800">ESG 框架</td>
-                                <td class="px-6 py-5 text-gray-600">外部风险、财务影响</td>
-                                <td class="px-6 py-5 text-gray-600">依赖企业自愿披露，易被“漂绿”。</td>
-                                <td class="px-6 py-5 text-teal-700 font-medium">加入多方实时数据，穿透企业“漂绿”行为。</td>
+                                <td class="px-6 py-5 font-bold text-slate-800" data-lang-key="table_esg">ESG 框架</td>
+                                <td class="px-6 py-5 text-gray-600" data-lang-key="table_esg_focus">外部风险、财务影响</td>
+                                <td class="px-6 py-5 text-gray-600" data-lang-key="table_esg_limit">依赖企业自愿披露，易被“漂绿”。</td>
+                                <td class="px-6 py-5 text-teal-700 font-medium" data-lang-key="table_esg_transcend">加入多方实时数据，穿透企业“漂绿”行为。</td>
                             </tr>
                             <tr>
-                                <td class="px-6 py-5 font-bold text-slate-800">新公民企业 (NCE)</td>
-                                <td class="px-6 py-5 text-gray-600">价值共创、社会契约</td>
-                                <td class="px-6 py-5 text-gray-600">--</td>
-                                <td class="px-6 py-5 text-teal-700 font-medium">结构化、真实性、本土化，与国家和社会目标深度绑定。</td>
+                                <td class="px-6 py-5 font-bold text-slate-800" data-lang-key="table_nce">新公民企业 (NCE)</td>
+                                <td class="px-6 py-5 text-gray-600" data-lang-key="table_nce_focus">价值共创、社会契约</td>
+                                <td class="px-6 py-5 text-gray-600" data-lang-key="table_nce_limit">--</td>
+                                <td class="px-6 py-5 text-teal-700 font-medium" data-lang-key="table_nce_transcend">结构化、真实性、本土化，与国家和社会目标深度绑定。</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- 四大支柱 (更新为五大评估维度) -->
+                <!-- 五大评估维度 -->
                 <div class="mt-20">
-                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-10">新公民企业的五大评估维度</h3>
-                    <!-- 使用 grid-cols-5 在大屏上会很挤，改为 flex 或 responsive grid 3/2 结构 -->
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-10" data-lang-key="dim_h3">新公民企业的五大评估维度</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- 维度 1 -->
                         <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
-                            <h4 class="text-xl font-semibold text-slate-900 mb-2">员工福祉</h4>
-                            <p class="text-gray-600">关注劳动关系公平性、薪酬激励、身心健康。对应 BizReview App 中的“员工”角色点评。</p>
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2" data-lang-key="dim1_h4">员工福祉</h4>
+                            <p class="text-gray-600" data-lang-key="dim1_p">关注劳动关系公平性、薪酬激励、身心健康。对应 BizReview App 中的“员工”角色点评。</p>
                         </div>
                         <!-- 维度 2 -->
                         <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
-                            <h4 class="text-xl font-semibold text-slate-900 mb-2">客户价值</h4>
-                            <p class="text-gray-600">关注产品质量、定价诚信、数据安全。对应 BizReview App 中的“客户方/消费者”角色点评。</p>
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2" data-lang-key="dim2_h4">客户价值</h4>
+                            <p class="text-gray-600" data-lang-key="dim2_p">关注产品质量、定价诚信、数据安全。对应 BizReview App 中的“客户方/消费者”角色点评。</p>
                         </div>
                         <!-- 维度 3 -->
                         <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
-                            <h4 class="text-xl font-semibold text-slate-900 mb-2">生态赋能</h4>
-                            <p class="text-gray-600">关注对供应商的公平对待、产业协同与带动。对应 BizReview App 中的“供应方”角色点评。</p>
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2" data-lang-key="dim3_h4">生态赋能</h4>
+                            <p class="text-gray-600" data-lang-key="dim3_p">关注对供应商的公平对待、产业协同与带动。对应 BizReview App 中的“供应方”角色点评。</p>
                         </div>
                         <!-- 维度 4 -->
                         <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500 md:col-span-1 lg:col-span-1">
-                            <h4 class="text-xl font-semibold text-slate-900 mb-2">社会贡献</h4>
-                            <p class="text-gray-600">关注环保投入、技术普惠、国家竞争力。数据来源为研究院获取的官方数据与合作调查。</p>
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2" data-lang-key="dim4_h4">社会贡献</h4>
+                            <p class="text-gray-600" data-lang-key="dim4_p">关注环保投入、技术普惠、国家竞争力。数据来源为研究院获取的官方数据与合作调查。</p>
                         </div>
-                        <!-- 维度 5 - 新增 -->
+                        <!-- 维度 5 -->
                          <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-500 md:col-span-1 lg:col-span-1">
-                            <h4 class="text-xl font-semibold text-slate-900 mb-2">公众感知/媒体声誉</h4>
-                            <p class="text-gray-600">评估企业在公共事件处理、媒体形象、舆论危机应对和社会认可度方面的表现。</p>
+                            <h4 class="text-xl font-semibold text-slate-900 mb-2" data-lang-key="dim5_h4">公众感知/媒体声誉</h4>
+                            <p class="text-gray-600" data-lang-key="dim5_p">评估企业在公共事件处理、媒体形象、舆论危机应对和社会认可度方面的表现。</p>
                         </div>
                     </div>
                 </div>
@@ -217,8 +221,8 @@
         <section id="demo" class="py-16 md:py-24 bg-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">BizReview App: 理念的实践引擎</h2>
-                    <p class="mt-4 text-lg text-gray-600">通过 NCE 评分模拟器，直观感受多方利益相关者的评价如何构成企业的综合价值。**（评分区间已更新为 0-10 分）**</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang-key="demo_h2">BizReview App: 理念的实践引擎</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-lang-key="demo_p">通过 NCE 评分模拟器，直观感受多方利益相关者的评价如何构成企业的综合价值。<span class="font-bold">（评分区间已更新为 0-10 分）</span></p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -227,65 +231,65 @@
                         <!-- 员工福祉 - 评分范围 0-10 -->
                         <div>
                             <label for="employeeScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
-                                <span>员工福祉</span>
+                                <span data-lang-key="slider1_label">员工福祉</span>
                                 <span id="employeeScoreValue" class="font-bold text-teal-600 text-xl">5</span>
                             </label>
                             <input type="range" id="employeeScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>基础 (0)</span>
-                                <span>卓越 (10)</span>
+                                <span data-lang-key="slider_min">基础 (0)</span>
+                                <span data-lang-key="slider1_max">卓越 (10)</span>
                             </div>
                         </div>
 
                         <!-- 客户价值 - 评分范围 0-10 -->
                         <div>
                             <label for="customerScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
-                                <span>客户价值</span>
+                                <span data-lang-key="slider2_label">客户价值</span>
                                 <span id="customerScoreValue" class="font-bold text-teal-600 text-xl">5</span>
                             </label>
                             <input type="range" id="customerScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>基础 (0)</span>
-                                <span>卓越 (+10)</span>
+                                <span data-lang-key="slider_min">基础 (0)</span>
+                                <span data-lang-key="slider2_max">卓越 (+10)</span>
                             </div>
                         </div>
 
                         <!-- 生态赋能 - 评分范围 0-10 -->
                         <div>
                             <label for="ecosystemScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
-                                <span>生态赋能</span>
+                                <span data-lang-key="slider3_label">生态赋能</span>
                                 <span id="ecosystemScoreValue" class="font-bold text-teal-600 text-xl">5</span>
                             </label>
                             <input type="range" id="ecosystemScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>基础 (0)</span>
-                                <span>共赢 (+10)</span>
+                                <span data-lang-key="slider_min">基础 (0)</span>
+                                <span data-lang-key="slider3_max">共赢 (+10)</span>
                             </div>
                         </div>
 
                         <!-- 社会贡献 - 评分范围 0-10 -->
                         <div>
                             <label for="societyScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
-                                <span>社会贡献 (研究院评估)</span>
+                                <span data-lang-key="slider4_label">社会贡献 (研究院评估)</span>
                                 <span id="societyScoreValue" class="font-bold text-teal-600 text-xl">5</span>
                             </label>
                             <input type="range" id="societyScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>合规 (0)</span>
-                                <span>引领 (+10)</span>
+                                <span data-lang-key="slider4_min">合规 (0)</span>
+                                <span data-lang-key="slider4_max">引领 (+10)</span>
                             </div>
                         </div>
                         
                         <!-- 公众感知/媒体声誉 - 新增维度，评分范围 0-10 -->
                         <div>
                             <label for="mediaScore" class="flex justify-between items-center text-lg font-medium text-slate-700 mb-2">
-                                <span>公众感知/媒体声誉</span>
+                                <span data-lang-key="slider5_label">公众感知/媒体声誉</span>
                                 <span id="mediaScoreValue" class="font-bold text-teal-600 text-xl">5</span>
                             </label>
                             <input type="range" id="mediaScore" min="0" max="10" value="5" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
                             <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>危机 (0)</span>
-                                <span>卓越 (10)</span>
+                                <span data-lang-key="slider5_min">危机 (0)</span>
+                                <span data-lang-key="slider5_max">卓越 (10)</span>
                             </div>
                         </div>
 
@@ -293,9 +297,9 @@
                         <!-- 综合总分 -->
                         <div class="pt-4">
                             <div class="bg-slate-100 p-6 rounded-lg text-center">
-                                <h4 class="text-lg font-medium text-gray-600 mb-1">NCE 综合总分</h4>
+                                <h4 class="text-lg font-medium text-gray-600 mb-1" data-lang-key="total_h4">NCE 综合总分</h4>
                                 <div id="totalScoreValue" class="text-6xl font-extrabold text-slate-900">25</div>
-                                <p class="text-sm text-gray-500">(分数范围: 0 至 +50)</p>
+                                <p class="text-sm text-gray-500" data-lang-key="total_p">(分数范围: 0 至 +50)</p>
                             </div>
                         </div>
                     </div>
@@ -312,39 +316,39 @@
         <section id="model" class="py-16 md:py-24">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">公信力基石：双主体协同模式</h2>
-                    <p class="mt-4 text-lg text-gray-600">为消除“裁判员兼运动员”的公信力风险，我们采用决策分离、运营协同的双主体结构。</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang-key="model_h2">公信力基石：双主体协同模式</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-lang-key="model_p">为消除“裁判员兼运动员”的公信力风险，我们采用决策分离、运营协同的双主体结构。</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                     <!-- 研究院 -->
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center">
                         <div class="text-3xl mb-4">🏛️</div>
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">NCE 研究院 (非营利)</h3>
-                        <p class="text-gray-600 mb-4">负责制定白皮书、维护打分标准、进行学术研究、联合发布报告。</p>
-                        <span class="inline-block bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1 rounded-full">核心：公信力 & 严谨性</span>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3" data-lang-key="model1_h3">NCE 研究院 (非营利)</h3>
+                        <p class="text-gray-600 mb-4" data-lang-key="model1_p">负责制定白皮书、维护打分标准、进行学术研究、联合发布报告。</p>
+                        <span class="inline-block bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1 rounded-full" data-lang-key="model1_tag">核心：公信力 & 严谨性</span>
                     </div>
                     <!-- App 公司 -->
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center">
                         <div class="text-3xl mb-4">📱</div>
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">BizReview 运营公司 (营利性)</h3>
-                        <p class="text-gray-600 mb-4">负责运营 BizReview App、收集用户点评数据、开发商业增值服务。</p>
-                        <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-medium px-4 py-1 rounded-full">核心：市场活力 & 数据引擎</span>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3" data-lang-key="model2_h3">BizReview 运营公司 (营利性)</h3>
+                        <p class="text-gray-600 mb-4" data-lang-key="model2_p">负责运营 BizReview App、收集用户点评数据、开发商业增值服务。</p>
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-medium px-4 py-1 rounded-full" data-lang-key="model2_tag">核心：市场活力 & 数据引擎</span>
                     </div>
                 </div>
                 <!-- 协同关系 -->
                 <div class="text-center mt-6 text-gray-600 text-lg font-medium flex justify-center items-center flex-col md:flex-row">
-                    <span class="block md:inline-block p-4">App公司 
-                        <span class="text-teal-600 font-bold mx-2">→</span> 
-                        支付授权费 & 提供脱敏数据
-                        <span class="text-teal-600 font-bold mx-2">→</span> 
-                        研究院
+                    <span class="block md:inline-block p-4" data-lang-key="model_coop1_p1">App公司</span>
+                        <span class="text-teal-600 font-bold mx-2" data-lang-key="model_coop1_p2">→</span> 
+                        <span data-lang-key="model_coop1_p3">支付授权费 & 提供脱敏数据</span>
+                        <span class="text-teal-600 font-bold mx-2" data-lang-key="model_coop1_p4">→</span> 
+                        <span data-lang-key="model_coop1_p5">研究院</span>
                     </span>
-                    <span class="block md:inline-block p-4">研究院 
-                        <span class="text-indigo-600 font-bold mx-2">→</span> 
-                        提供公信力背书 & 榜单
-                        <span class="text-indigo-600 font-bold mx-2">→</span> 
-                        App公司
+                    <span class="block md:inline-block p-4" data-lang-key="model_coop2_p1">研究院</span> 
+                        <span class="text-indigo-600 font-bold mx-2" data-lang-key="model_coop2_p2">→</span> 
+                        <span data-lang-key="model_coop2_p3">提供公信力背书 & 榜单</span>
+                        <span class="text-indigo-600 font-bold mx-2" data-lang-key="model_coop2_p4">→</span> 
+                        <span data-lang-key="model_coop2_p5">App公司</span>
                     </span>
                 </div>
             </div>
@@ -354,39 +358,39 @@
         <section id="roadmap" class="py-16 md:py-24 bg-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">项目行动计划</h2>
-                    <p class="mt-4 text-lg text-gray-600">一个分三阶段实施的清晰路线图。</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang-key="roadmap_h2">项目行动计划</h2>
+                    <p class="mt-4 text-lg text-gray-600" data-lang-key="roadmap_p">一个分三阶段实施的清晰路线图。</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- 阶段 I -->
                     <div class="bg-slate-50 border border-gray-200 p-8 rounded-xl">
-                        <div class="text-teal-600 font-bold text-sm uppercase mb-2">阶段 I: 冷启动</div>
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">验证理念，获得公信力</h3>
+                        <div class="text-teal-600 font-bold text-sm uppercase mb-2" data-lang-key="phase1_tag">阶段 I: 冷启动</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3" data-lang-key="phase1_h3">验证理念，获得公信力</h3>
                         <ul class="list-disc list-outside space-y-2 text-gray-600 pl-5">
-                            <li>撰写并发布《新公民企业》白皮书。</li>
-                            <li>找寻学术机构达成**联合研究合作**。</li>
-                            <li>App 初版完成内部测试。</li>
+                            <li data-lang-key="phase1_l1">撰写并发布《新公民企业》白皮书。</li>
+                            <li data-lang-key="phase1_l2">找寻学术机构达成**联合研究合作**。</li>
+                            <li data-lang-key="phase1_l3">App 初版完成内部测试。</li>
                         </ul>
                     </div>
                     <!-- 阶段 II -->
                     <div class="bg-slate-50 border border-gray-200 p-8 rounded-xl">
-                        <div class="text-teal-600 font-bold text-sm uppercase mb-2">阶段 II: 合作落地</div>
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">建立影响力，吸引用户</h3>
+                        <div class="text-teal-600 font-bold text-sm uppercase mb-2" data-lang-key="phase2_tag">阶段 II: 合作落地</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3" data-lang-key="phase2_h3">建立影响力，吸引用户</h3>
                         <ul class="list-disc list-outside space-y-2 text-gray-600 pl-5">
-                            <li>与知名企业达成初期合作调查，作为典范案例。</li>
-                            <li>联合学术机构发布首份**年度行业报告**。</li>
-                            <li>App 正式对外开放并进行推广。</li>
+                            <li data-lang-key="phase2_l1">与知名企业达成初期合作调查，作为典范案例。</li>
+                            <li data-lang-key="phase2_l2">联合学术机构发布首份**年度行业报告**。</li>
+                            <li data-lang-key="phase2_l3">App 正式对外开放并进行推广。</li>
                         </ul>
                     </div>
                     <!-- 阶段 III -->
                     <div class="bg-slate-50 border border-gray-200 p-8 rounded-xl">
-                        <div class="text-teal-600 font-bold text-sm uppercase mb-2">阶段 III: 规模化</div>
-                        <h3 class="text-2xl font-semibold text-slate-900 mb-3">实现可持续运营</h3>
+                        <div class="text-teal-600 font-bold text-sm uppercase mb-2" data-lang-key="phase3_tag">阶段 III: 规模化</div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-3" data-lang-key="phase3_h3">实现可持续运营</h3>
                         <ul class="list-disc list-outside space-y-2 text-gray-600 pl-5">
-                            <li>正式成立**研究院**（非营利）和**公司**（营利性）。</li>
-                            <li>与省市级政府部门达成首个**购买服务合同**。</li>
-                            <li>App 实现规模化用户增长和商业变现。</li>
+                            <li data-lang-key="phase3_l1">正式成立**研究院**（非营利）和**公司**（营利性）。</li>
+                            <li data-lang-key="phase3_l2">与省市级政府部门达成首个**购买服务合同**。</li>
+                            <li data-lang-key="phase3_l3">App 实现规模化用户增长和商业变现。</li>
                         </ul>
                     </div>
                 </div>
@@ -396,22 +400,22 @@
         <!-- 宏大愿景 -->
         <section id="vision" class="py-16 md:py-24">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">我们的宏大愿景</h2>
-                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang-key="vision_h2">我们的宏大愿景</h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto" data-lang-key="vision_p1">
                     NCE 的核心方法论——**“多方穿透式透明评估”**——具有极强的可迁移性。在巩固企业领域后，我们将以相同的方法论扩展至更广泛的社会主体：
                 </p>
                 <div class="mt-10 flex flex-wrap justify-center gap-4">
-                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg">
+                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg" data-lang-key="vision_tag1">
                         🏫 学校 / 教育机构
                     </span>
-                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg">
+                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg" data-lang-key="vision_tag2">
                         🏥 医院 / 医疗机构
                     </span>
-                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg">
+                    <span class="bg-white shadow-md text-slate-700 font-medium py-2 px-5 rounded-full text-lg" data-lang-key="vision_tag3">
                         🏛️ 政府部门 / 公共服务
                     </span>
                 </div>
-                <p class="mt-8 text-2xl font-semibold text-teal-700">
+                <p class="mt-8 text-2xl font-semibold text-teal-700" data-lang-key="vision_p2">
                     最终实现“全球最大的主体治理平台”的愿景。
                 </p>
             </div>
@@ -422,22 +426,281 @@
     <!-- 页脚 -->
     <footer class="bg-slate-800 text-slate-300 py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-lg font-semibold text-white">新公民企业 (NCE) 项目</p>
-            <p class="mt-2 text-sm">以透明度驱动社会良性运转。</p>
-            <p class="mt-4 text-xs text-slate-400">&copy; 2025 NCE 项目。保留所有权利。</p>
+            <p class="text-lg font-semibold text-white" data-lang-key="footer_title">新公民企业 (NCE) 项目</p>
+            <p class="mt-2 text-sm" data-lang-key="footer_p">以透明度驱动社会良性运转。</p>
+            <p class="mt-4 text-xs text-slate-400" data-lang-key="footer_copy">&copy; 2025 NCE 项目。保留所有权利。</p>
         </div>
     </footer>
 
     <script>
+        // --- 语言数据 ---
+        const langData = {
+            "zh": {
+                "title": "新公民企业 (NCE) 项目",
+                "nav_philosophy": "理念",
+                "nav_product": "产品与模拟",
+                "nav_credibility": "公信力模型",
+                "nav_roadmap": "行动计划",
+                "nav_vision": "宏大愿景",
+                "hero_h1_part1": "构建全球最大的",
+                "hero_h1_part2": "主体治理平台",
+                "hero_p": "我们相信，透明度是驱动社会良性运转的核心力量。通过 BizReview App 和 NCE 评估体系，我们正在重新定义企业的价值。",
+                "hero_button": "探索评分模拟器",
+                "phil_h2": "理念的演进：超越 CSR 与 ESG",
+                "phil_p": "NCE 理念是企业社会责任的第三代模型，它从根本上解决了前代模型的局限性。",
+                "table_model": "理念模型",
+                "table_focus": "核心关注点",
+                "table_limitation": "局限性",
+                "table_transcendence": "NCE 的超越性",
+                "table_csr": "企业公民 (CSR)",
+                "table_csr_focus": "回馈社会、慈善捐赠",
+                "table_csr_limit": "与核心业务分离，缺乏可穿透的工具。",
+                "table_csr_transcend": "视为基本道德，而非核心价值。",
+                "table_esg": "ESG 框架",
+                "table_esg_focus": "外部风险、财务影响",
+                "table_esg_limit": "依赖企业自愿披露，易被“漂绿”。",
+                "table_esg_transcend": "加入多方实时数据，穿透企业“漂绿”行为。",
+                "table_nce": "新公民企业 (NCE)",
+                "table_nce_focus": "价值共创、社会契约",
+                "table_nce_limit": "--",
+                "table_nce_transcend": "结构化、真实性、本土化，与国家和社会目标深度绑定。",
+                "dim_h3": "新公民企业的五大评估维度",
+                "dim1_h4": "员工福祉",
+                "dim1_p": "关注劳动关系公平性、薪酬激励、身心健康。对应 BizReview App 中的“员工”角色点评。",
+                "dim2_h4": "客户价值",
+                "dim2_p": "关注产品质量、定价诚信、数据安全。对应 BizReview App 中的“客户方/消费者”角色点评。",
+                "dim3_h4": "生态赋能",
+                "dim3_p": "关注对供应商的公平对待、产业协同与带动。对应 BizReview App 中的“供应方”角色点评。",
+                "dim4_h4": "社会贡献",
+                "dim4_p": "关注环保投入、技术普惠、国家竞争力。数据来源为研究院获取的官方数据与合作调查。",
+                "dim5_h4": "公众感知/媒体声誉",
+                "dim5_p": "评估企业在公共事件处理、媒体形象、舆论危机应对和社会认可度方面的表现。",
+                "demo_h2": "BizReview App: 理念的实践引擎",
+                "demo_p": "通过 NCE 评分模拟器，直观感受多方利益相关者的评价如何构成企业的综合价值。（评分区间已更新为 0-10 分）",
+                "slider1_label": "员工福祉",
+                "slider1_max": "卓越 (10)",
+                "slider2_label": "客户价值",
+                "slider2_max": "卓越 (+10)",
+                "slider3_label": "生态赋能",
+                "slider3_max": "共赢 (+10)",
+                "slider4_label": "社会贡献 (研究院评估)",
+                "slider4_min": "合规 (0)",
+                "slider4_max": "引领 (+10)",
+                "slider5_label": "公众感知/媒体声誉",
+                "slider5_min": "危机 (0)",
+                "slider5_max": "卓越 (10)",
+                "slider_min": "基础 (0)",
+                "total_h4": "NCE 综合总分",
+                "total_p": "(分数范围: 0 至 +50)",
+                "model_h2": "公信力基石：双主体协同模式",
+                "model_p": "为消除“裁判员兼运动员”的公信力风险，我们采用决策分离、运营协同的双主体结构。",
+                "model1_h3": "NCE 研究院 (非营利)",
+                "model1_p": "负责制定白皮书、维护打分标准、进行学术研究、联合发布报告。",
+                "model1_tag": "核心：公信力 & 严谨性",
+                "model2_h3": "BizReview 运营公司 (营利性)",
+                "model2_p": "负责运营 BizReview App、收集用户点评数据、开发商业增值服务。",
+                "model2_tag": "核心：市场活力 & 数据引擎",
+                "model_coop1_p1": "App公司",
+                "model_coop1_p2": "→",
+                "model_coop1_p3": "支付授权费 & 提供脱敏数据",
+                "model_coop1_p4": "→",
+                "model_coop1_p5": "研究院",
+                "model_coop2_p1": "研究院",
+                "model_coop2_p2": "→",
+                "model_coop2_p3": "提供公信力背书 & 榜单",
+                "model_coop2_p4": "→",
+                "model_coop2_p5": "App公司",
+                "roadmap_h2": "项目行动计划",
+                "roadmap_p": "一个分三阶段实施的清晰路线图。",
+                "phase1_tag": "阶段 I: 冷启动",
+                "phase1_h3": "验证理念，获得公信力",
+                "phase1_l1": "撰写并发布《新公民企业》白皮书。",
+                "phase1_l2": "找寻学术机构达成联合研究合作。",
+                "phase1_l3": "App 初版完成内部测试。",
+                "phase2_tag": "阶段 II: 合作落地",
+                "phase2_h3": "建立影响力，吸引用户",
+                "phase2_l1": "与知名企业达成初期合作调查，作为典范案例。",
+                "phase2_l2": "联合学术机构发布首份年度行业报告。",
+                "phase2_l3": "App 正式对外开放并进行推广。",
+                "phase3_tag": "阶段 III: 规模化",
+                "phase3_h3": "实现可持续运营",
+                "phase3_l1": "正式成立研究院（非营利）和公司（营利性）。",
+                "phase3_l2": "与省市级政府部门达成首个购买服务合同。",
+                "phase3_l3": "App 实现规模化用户增长和商业变现。",
+                "vision_h2": "我们的宏大愿景",
+                "vision_p1": "NCE 的核心方法论——“多方穿透式透明评估”——具有极强的可迁移性。在巩固企业领域后，我们将以相同的方法论扩展至更广泛的社会主体：",
+                "vision_tag1": "🏫 学校 / 教育机构",
+                "vision_tag2": "🏥 医院 / 医疗机构",
+                "vision_tag3": "🏛️ 政府部门 / 公共服务",
+                "vision_p2": "最终实现“全球最大的主体治理平台”的愿景。",
+                "footer_title": "新公民企业 (NCE) 项目",
+                "footer_p": "以透明度驱动社会良性运转。",
+                "footer_copy": "© 2025 NCE 项目。保留所有权利。"
+            },
+            "en": {
+                "title": "New Citizen Enterprise (NCE) Project",
+                "nav_philosophy": "Philosophy",
+                "nav_product": "Product & Demo",
+                "nav_credibility": "Credibility Model",
+                "nav_roadmap": "Roadmap",
+                "nav_vision": "Grand Vision",
+                "hero_h1_part1": "Building the World's Largest",
+                "hero_h1_part2": "Governance Platform",
+                "hero_p": "We believe transparency is the core force driving healthy social operation. Through the BizReview App and NCE assessment system, we are redefining the value of enterprises.",
+                "hero_button": "Explore Scoring Simulator",
+                "phil_h2": "Evolution of the Philosophy: Beyond CSR & ESG",
+                "phil_p": "The NCE framework represents the third-generation model of corporate social responsibility, fundamentally addressing the limitations of prior models.",
+                "table_model": "Model",
+                "table_focus": "Core Focus",
+                "table_limitation": "Limitation",
+                "table_transcendence": "NCE Advancement",
+                "table_csr": "Corporate Social Responsibility (CSR)",
+                "table_csr_focus": "Giving back, Philanthropic donations",
+                "table_csr_limit": "Separated from core business; lacks penetrative tools.",
+                "table_csr_transcend": "Treated as basic ethics, not core value.",
+                "table_esg": "ESG Framework",
+                "table_esg_focus": "External risks, Financial impact",
+                "table_esg_limit": "Relies on voluntary disclosure; prone to 'greenwashing'.",
+                "table_esg_transcend": "Integrates multi-party real-time data to penetrate 'greenwashing'.",
+                "table_nce": "New Citizen Enterprise (NCE)",
+                "table_nce_focus": "Shared Value Creation, Social Contract",
+                "table_nce_limit": "--",
+                "table_nce_transcend": "Structured, Authentic, Localized, deeply tied to national and social goals.",
+                "dim_h3": "The Five Assessment Dimensions of NCE",
+                "dim1_h4": "Employee Well-being",
+                "dim1_p": "Focuses on fair labor relations, compensation, health. Corresponds to 'Employee' reviews on BizReview App.",
+                "dim2_h4": "Customer Value",
+                "dim2_p": "Focuses on product quality, pricing integrity, data security. Corresponds to 'Customer/Consumer' reviews on BizReview App.",
+                "dim3_h4": "Ecosystem Enablement",
+                "dim3_p": "Focuses on fair treatment of suppliers, industrial synergy, and ecosystem growth. Corresponds to 'Supplier' reviews on BizReview App.",
+                "dim4_h4": "Societal Contribution",
+                "dim4_p": "Focuses on environmental investment, technological inclusion, and national competitiveness. Data sourced from Institute research and official records.",
+                "dim5_h4": "Public Perception/Media Integrity",
+                "dim5_p": "Assesses enterprise performance in handling public incidents, media image, crisis management, and social acceptance.",
+                "demo_h2": "BizReview App: The Engine of the Philosophy",
+                "demo_p": "Use the NCE scoring simulator to visualize how multi-stakeholder evaluations constitute an enterprise's comprehensive value. (Score range updated to 0-10 points)",
+                "slider1_label": "Employee Well-being",
+                "slider1_max": "Excellence (10)",
+                "slider2_label": "Customer Value",
+                "slider2_max": "Excellence (+10)",
+                "slider3_label": "Ecosystem Enablement",
+                "slider3_max": "Win-Win (+10)",
+                "slider4_label": "Societal Contribution (Institute Rating)",
+                "slider4_min": "Compliance (0)",
+                "slider4_max": "Leadership (+10)",
+                "slider5_label": "Public Perception/Media Integrity",
+                "slider5_min": "Crisis (0)",
+                "slider5_max": "Excellence (10)",
+                "slider_min": "Basic (0)",
+                "total_h4": "NCE Composite Score",
+                "total_p": "(Score Range: 0 to +50)",
+                "model_h2": "Cornerstone of Credibility: Dual-Entity Collaborative Model",
+                "model_p": "To eliminate the conflict-of-interest risk ('referee and player'), we adopt a dual-entity structure with separated governance and operational synergy.",
+                "model1_h3": "NCE Institute (Non-profit)",
+                "model1_p": "Responsible for developing the White Paper, maintaining standards, conducting academic research, and co-publishing reports.",
+                "model1_tag": "Core: Credibility & Rigor",
+                "model2_h3": "BizReview Operating Company (For-profit)",
+                "model2_p": "Responsible for operating the BizReview App, collecting user review data, and developing commercial value-added services.",
+                "model2_tag": "Core: Market Vitality & Data Engine",
+                "model_coop1_p1": "App Company",
+                "model_coop1_p2": "→",
+                "model_coop1_p3": "Pays License Fee & Provides Anonymized Data",
+                "model_coop1_p4": "→",
+                "model_coop1_p5": "Institute",
+                "model_coop2_p1": "Institute",
+                "model_coop2_p2": "→",
+                "model_coop2_p3": "Provides Credibility Endorsement & Rankings",
+                "model_coop2_p4": "→",
+                "model_coop2_p5": "App Company",
+                "roadmap_h2": "Project Action Plan",
+                "roadmap_p": "A clear roadmap implemented in three phases.",
+                "phase1_tag": "Phase I: Cold Start",
+                "phase1_h3": "Validate Philosophy, Establish Credibility",
+                "phase1_l1": "Draft and publish the New Citizen Enterprise White Paper.",
+                "phase1_l2": "Seek academic institutions to establish **Joint Research Collaboration**.",
+                "phase1_l3": "App prototype completes internal testing.",
+                "phase2_tag": "Phase II: Partnership Execution",
+                "phase2_h3": "Build Influence, Attract Users",
+                "phase2_l1": "Finalize initial collaborative investigation with known enterprises for case studies.",
+                "phase2_l2": "Co-publish the first **Annual Industry Report** with the academic partner.",
+                "phase2_l3": "App officially launches and promotion begins.",
+                "phase3_tag": "Phase III: Scaling Up",
+                "phase3_h3": "Achieve Sustainable Operations",
+                "phase3_l1": "Formally establish the **Institute** (Non-profit) and the **Company** (For-profit).",
+                "phase3_l2": "Secure the first **Government Procurement Contract** with provincial/municipal authorities.",
+                "phase3_l3": "App achieves scaled user growth and commercial monetization.",
+                "vision_h2": "Our Grand Vision",
+                "vision_p1": "The NCE core methodology—**'Multi-party Penetrative Transparent Assessment'**—is highly transferable. After consolidating the enterprise sector, we will expand to broader social entities:",
+                "vision_tag1": "🏫 Schools / Educational Institutions",
+                "vision_tag2": "🏥 Hospitals / Medical Institutions",
+                "vision_tag3": "🏛️ Government Departments / Public Services",
+                "vision_p2": "Ultimately realizing the vision of building the 'World's Largest Governance Platform'.",
+                "footer_title": "New Citizen Enterprise (NCE) Project",
+                "footer_p": "Driving healthy social operation through transparency.",
+                "footer_copy": "© 2025 NCE Project. All rights reserved."
+            }
+        };
+
+        let currentLang = 'en'; // 默认语言为英文
+        
+        function updateContent(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (langData[lang] && langData[lang][key]) {
+                    if (element.tagName === 'TITLE') {
+                         document.title = langData[lang][key];
+                    } else {
+                        // 处理特殊情况 (如 span 嵌套在 h1, 或 a 标签)
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = langData[lang][key];
+                        } else if (element.tagName === 'SPAN' || element.tagName === 'A' || element.tagName === 'BUTTON' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'H4' || element.tagName === 'TD' || element.tagName === 'TH' || element.tagName === 'P' || element.tagName === 'DIV' || element.tagName === 'LI') {
+                            // 仅更新内容，保留子元素（如 span 标签）
+                            if (element.children.length === 0) {
+                                element.textContent = langData[lang][key];
+                            } else {
+                                // 处理 H1/TD/P 等包含 span 的情况，仅更新文本，避免覆盖内部标签
+                                const innerText = element.querySelector('span') ? element.innerHTML.replace(element.querySelector('span').outerHTML, '@@@TEMP@@@') : element.textContent;
+                                element.innerHTML = element.innerHTML.replace(innerText, langData[lang][key]);
+                            }
+                        } else {
+                            element.textContent = langData[lang][key];
+                        }
+                    }
+                }
+            });
+
+            document.documentElement.lang = lang;
+            updateChartLabels(lang);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            updateContent(currentLang);
+        }
+
+        function updateChartLabels(lang) {
+            if (!nceRadarChart) return;
+
+            const labels = lang === 'zh' ? 
+                ['员工福祉', '客户价值', '生态赋能', '社会贡献', '公众感知/媒体声誉'] :
+                ['Employee Well-being', 'Customer Value', 'Ecosystem Enablement', 'Societal Contribution', 'Public Perception/Media'];
+            
+            nceRadarChart.data.labels = labels;
+            
+            // 更新 ticks 的语言（如果需要，但 Chart.js 默认不支持自动更新 ticks 文本，这里保持通用性）
+            
+            nceRadarChart.update();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // --- 图表初始化 ---
             const ctx = document.getElementById('nceRadarChart').getContext('2d');
+            const initialLabels = langData[currentLang].labels || langData['en'].labels || ['Employee Well-being', 'Customer Value', 'Ecosystem Enablement', 'Societal Contribution', 'Public Perception/Media']; // 使用默认英文标签初始化
+            
             const chartData = {
-                // 标签更新为 5 个维度
-                labels: ['员工福祉', '客户价值', '生态赋能', '社会贡献', '公众感知/媒体声誉'],
+                labels: initialLabels,
                 datasets: [{
-                    label: 'NCE 综合评分',
-                    // 初始值更新为 5 个维度 (0-10 区间)
+                    label: 'NCE Composite Score',
                     data: [5, 5, 5, 5, 5], 
                     fill: true,
                     backgroundColor: 'rgba(20, 184, 166, 0.2)', // 青色背景
@@ -449,7 +712,7 @@
                 }]
             };
 
-            const nceRadarChart = new Chart(ctx, {
+            window.nceRadarChart = new Chart(ctx, { // 存储到 window 以便在 updateChartLabels 中访问
                 type: 'radar',
                 data: chartData,
                 options: {
@@ -470,18 +733,18 @@
                                 },
                                 color: '#334155' // slate-700
                             },
-                            min: 0, // 评分范围更新为 0-10
-                            max: 10, // 评分范围更新为 0-10
+                            min: 0, 
+                            max: 10, 
                             ticks: {
-                                stepSize: 2, // 调整步长以适应 0-10
-                                backdropColor: 'rgba(255, 255, 255, 0.75)', // 半透明背景
-                                color: '#475569' // slate-600
+                                stepSize: 2, 
+                                backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                color: '#475569' 
                             }
                         }
                     },
                     plugins: {
                         legend: {
-                            display: false // 隐藏图例
+                            display: false 
                         },
                         tooltip: {
                             callbacks: {
@@ -495,13 +758,12 @@
             });
 
             // --- 滑块与图表联动 ---
-            // 滑块列表更新为 5 个维度
             const sliders = [
                 { id: 'employeeScore', valueId: 'employeeScoreValue' },
                 { id: 'customerScore', valueId: 'customerScoreValue' },
                 { id: 'ecosystemScore', valueId: 'ecosystemScoreValue' },
                 { id: 'societyScore', valueId: 'societyScoreValue' },
-                { id: 'mediaScore', valueId: 'mediaScoreValue' } // 新增媒体声誉
+                { id: 'mediaScore', valueId: 'mediaScoreValue' }
             ];
             const totalScoreEl = document.getElementById('totalScoreValue');
 
@@ -523,8 +785,12 @@
                 totalScoreEl.textContent = totalScore;
             }
 
-            // 初始化总分
+            // 初始化总分和内容 (确保在图表和内容加载后调用)
             updateChartAndScore(); 
+            updateContent(currentLang);
+            
+            // 语言切换按钮事件
+            document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
 
             sliders.forEach(s => {
                 document.getElementById(s.id).addEventListener('input', updateChartAndScore);
